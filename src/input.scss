@@ -9,8 +9,8 @@ body{
     color:rgba($color_primary, 0.4);
     background-color: $color_standar;
     header{
-        background-color: $color_primary;
-        height: 10%;
+        background-color: $color_secondary;
+        height: 20%;
     }
 
     #mapid { height: 780px; }
@@ -21,7 +21,7 @@ body{
     }
 
     footer{
-        background-color: $color_secondary;
-        height: 5%;
+        background-color: $color_primary;
+        height: 20%;
     }
 }

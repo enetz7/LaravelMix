@@ -1,51 +1,50 @@
-const path = require('path');
-const loader = require('sass-loader');
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const path = require("path");
+const loader = require("sass-loader");
+const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
-    module: {
-        rules: [
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
           {
-            test: /\.s[ac]ss$/i,
-            use: [
-              "style-loader",
-              "css-loader",
-              {
-                loader:'sass-loader',
-                options: {
-                  sourceMap: true,
-                  sassOptions: {
-                    outputStyle: "compressed",
-                  },
-                },
-              }
-            ], 
-            include: [path.resolve(__dirname, 'src/')] 
-          },
-          {
-            test: /\.html$/i,
-            loader: 'html-loader',
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+              sassOptions: {
+                outputStyle: "compressed",
+              },
+            },
           },
         ],
+        include: [path.resolve(__dirname, "src/")],
       },
-    plugins: [
-      new MiniCSSExtractPlugin({
-        filename: "/dist/input.css",
-      })
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
     ],
-    externals: {
-        lodash: '_',
-        leaflet: 'L',
-    },
-    devServer: {
-      contentBase: path.join(__dirname, 'dist'),
-      filename: 'index.html',
-      compress: true,
-      port: 8080
-    },
-  entry: ['./src/index.js','./src/index.html'],
-  output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, 'dist'),
   },
- 
+  plugins: [
+    new MiniCSSExtractPlugin({
+      filename: "/dist/input.css",
+    }),
+  ],
+  externals: {
+    lodash: "_",
+    leaflet: "L",
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    filename: "index.html",
+    compress: true,
+    port: 8080,
+  },
+  entry: ["./src/index.js", "./src/index.html"], //si no pones index.js break .
+  output: {
+    filename: "index.js",
+    path: path.resolve(__dirname, "dist"),
+  },
 };
