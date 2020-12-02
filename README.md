@@ -1,1 +1,1 @@
-# WebPack
+# LaravelMix
